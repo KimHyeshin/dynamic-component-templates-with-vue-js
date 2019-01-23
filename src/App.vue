@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    {{msg}}
     <router-view></router-view>
+    <app-modal></app-modal>
   </div>
 </template>
 
 <script>
+  import AppModal from './components/containers/DefaultModal'
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  components:{
+    AppModal
   }
 }
 </script>
