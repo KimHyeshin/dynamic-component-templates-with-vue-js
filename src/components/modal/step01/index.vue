@@ -15,8 +15,7 @@
 
           <!--버튼-->
           <div class="card-footer">
-            <button>추가</button>
-            <button @click="hideModal">닫기</button>
+            <button @click="hideSubModal">닫기</button>
           </div>
           <!--//버튼-->
 
@@ -40,7 +39,7 @@
       }
     },
     methods: {
-      ...mapMutations(['hideModal']),
+      ...mapMutations(['hideSubModal']),
     },
   }
 </script>
@@ -67,13 +66,16 @@
     vertical-align: middle;
   }
   .popup {
-    width: 500px;
-    min-height: 200px;
+    width: 300px;
+    height: 300px;
+    padding: 80px;
+    box-sizing: border-box;
     display: inline-block;
     vertical-align: middle;
     text-align: left;
     background: #fff;
     text-align: center;
+    border: 2px solid orange;
   }
   ul {
     list-style: none;

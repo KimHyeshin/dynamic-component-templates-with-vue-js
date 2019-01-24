@@ -19,7 +19,7 @@
             <button @click="setComponent(1)">Step02 팝업</button>
             <button @click="setComponent(2)">Step03 팝업</button>
             <button @click="setComponent(3)">Step04 팝업</button>
-            <button @click="">닫기</button>
+            <button @click="hideModal">닫기</button>
           </div>
           <!--//버튼-->
 
@@ -60,7 +60,7 @@
       console.log(this.listData);
     },
     methods: {
-      ...mapMutations(['showSubModal']),
+      ...mapMutations(['showSubModal', 'hideModal']),
       setComponent(num) {
         console.log("setComponent");
         this.showSubModal();
@@ -119,6 +119,7 @@
     text-align: left;
     background: #fff;
     text-align: center;
+    border: 2px solid skyblue;
   }
   ul {
     list-style: none;
