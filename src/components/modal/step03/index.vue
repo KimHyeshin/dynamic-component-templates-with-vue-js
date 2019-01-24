@@ -15,6 +15,7 @@
 
           <!--버튼-->
           <div class="card-footer">
+            <button @click="showSubModal('step04')">다음</button>
             <button @click="hideSubModal">닫기</button>
           </div>
           <!--//버튼-->
@@ -31,6 +32,7 @@
 
   export default {
     name: 'Step03',
+    props: ['valueData'],
     data() {
       return {
         component: null,
@@ -38,8 +40,12 @@
         listData: []
       }
     },
+    mounted(){
+      console.log("step03");
+      console.log(this.valueData);
+    },
     methods: {
-      ...mapMutations(['hideSubModal']),
+      ...mapMutations(['showSubModal','hideSubModal']),
     },
   }
 </script>

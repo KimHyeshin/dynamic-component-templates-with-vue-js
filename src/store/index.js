@@ -8,6 +8,7 @@ const store = new Vuex.Store({
     modalVisible: false,
     modalComponent: null,
     subModalVisible: false,
+    subModalComponent: null,
   },
   mutations: {
     /**
@@ -21,17 +22,20 @@ const store = new Vuex.Store({
     },
     hideModal(state) {
       state.modalVisible = false;
+      state.modalComponent = null;
     },
     /**
      * subModal
      * @param state
      * @param componentName
      */
-    showSubModal(state) {
+    showSubModal(state, componentName) {
       state.subModalVisible = true;
+      state.subModalComponent = componentName;
     },
     hideSubModal(state) {
       state.subModalVisible = false;
+      state.subModalComponent = null;
     },
   }
 })

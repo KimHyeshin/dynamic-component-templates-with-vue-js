@@ -31,12 +31,17 @@
 
   export default {
     name: 'Step04',
+    props: ['valueData'],
     data() {
       return {
         component: null,
         originData: {},
         listData: []
       }
+    },
+    mounted(){
+      console.log("step04");
+      console.log(this.valueData);
     },
     methods: {
       ...mapMutations(['hideSubModal']),

@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div class="popup_wrap">
+  <div class="popup_wrap">
       <div class="popup">
         <div class="card">
           <div class="card-header">
@@ -15,6 +14,7 @@
 
           <!--버튼-->
           <div class="card-footer">
+            <button @click="showSubModal('step02')">다음</button>
             <button @click="hideSubModal">닫기</button>
           </div>
           <!--//버튼-->
@@ -22,7 +22,6 @@
         </div><!--//card-->
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -31,15 +30,19 @@
 
   export default {
     name: 'Step01',
+    props: ['valueData'],
     data() {
       return {
         component: null,
         originData: {},
-        listData: []
       }
     },
+    mounted(){
+      console.log("step01");
+      console.log(this.valueData);
+    },
     methods: {
-      ...mapMutations(['hideSubModal']),
+      ...mapMutations(['showSubModal','hideSubModal']),
     },
   }
 </script>
