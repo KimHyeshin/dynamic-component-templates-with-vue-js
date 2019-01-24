@@ -15,29 +15,42 @@
 
           <!--버튼-->
           <div class="card-footer">
-            <button>추가</button>
-            <button @click="hideModal">닫기</button>
+            <button @click="setComponent(0)">Step01 팝업</button>
+            <button @click="setComponent(1)">Step02 팝업</button>
+            <button @click="setComponent(2)">Step03 팝업</button>
+            <button @click="setComponent(3)">Step04 팝업</button>
+            <button @click="">닫기</button>
           </div>
           <!--//버튼-->
 
         </div><!--//card-->
       </div>
     </div>
+    <component :is="whichStep" v-if="visible"></component>
+    <!--<el-button style="margin-top: 12px;" @click="previous">Previous step</el-button>-->
+    <!--<el-button style="margin-top: 12px;" @click="next">Next step</el-button>-->
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
-  import { mapMutations } from 'vuex';
+  import { mapState, mapMutations } from 'vuex';
   import originalData from './data';
 
   export default {
     name: 'ViewList',
+    components: { // 여기서 동적으로 로딩한다
+      'Step01': () => import('../step01'),
+      'Step02': () => import('../step02'),
+      'Step03': () => import('../step03'),
+      'Step04': () => import('../step04'),
+    },
     data() {
       return {
         component: null,
         originData: {},
-        listData: []
+        listData: [],
+        active: null
       }
     },
     created() {
@@ -47,8 +60,33 @@
       console.log(this.listData);
     },
     methods: {
-      ...mapMutations(['hideModal']),
+      ...mapMutations(['showSubModal']),
+      setComponent(num) {
+        console.log("setComponent");
+        this.showSubModal();
+        this.active = num
+      }
     },
+    computed: {
+      ...mapState({
+        visible: 'subModalVisible',
+      }),
+      whichStep () {
+        console.log("whichStep");
+        switch (this.active) {
+          case 0:
+            return 'Step01'
+          case 1:
+            return 'Step02'
+          case 2:
+            return 'Step03'
+          case 3:
+            return 'Step04'
+          default:
+            return 'Step01'
+        }
+      }
+    }
   }
 </script>
 
